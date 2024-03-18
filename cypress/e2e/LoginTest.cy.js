@@ -12,5 +12,9 @@ describe("Test suite 1", () => {
 
   it("Test 2: Try to signup.", function () {
     cy.get(".ChoiceLabel1").click();
+    cy.get("#name").type("test1");
+    cy.get("#email").type("test1@gmail.com");
+    cy.get("#password").type("123");
+    cy.get(".button-SignUp").click();
   });
 });
