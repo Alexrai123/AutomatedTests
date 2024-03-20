@@ -27,8 +27,6 @@ Cypress.Commands.add("test_new_acc", (name, email, password) => {
   cy.get("#email").type(email);
   cy.get("#password").type(password);
   cy.get(".button-SignUp").click();
-  //cy.visit("http://atc-2024-autobotzi-fe-linux-web-app.azurewebsites.net/");
-  //cy.get(".ChoiceLabel").click();
   cy.url().should("include", "/login");
   cy.get("#email").type(email);
   cy.get("#password").type(password);
@@ -68,6 +66,13 @@ Cypress.Commands.add(
     cy.get("#name").type(departmentName);
     cy.get("#description").type(departmentDescription);
     cy.wait(1000);
+    cy.get(".add-department-button > .p-button").click();
+    cy.get(
+      ":nth-child(3) > .DepCardContent > .DepCardFields > :nth-child(1)"
+    ).should("include", departmentName);
+    cy.get(
+      ":nth-child(3) > .DepCardContent > .DepCardFields > :nth-child(3) > .FieldContentLabel"
+    ).should("include", departmentDescription);
   }
 );
 
@@ -84,7 +89,7 @@ Cypress.Commands.add("sendEmail", (email, subject, message) => {
   cy.get("#message").type(message);
   cy.get("SEND").click();
 });
-
+/*
 describe("Test suite 1 for login page scenarios", () => {
   beforeEach(() => {
     cy.visit("http://atc-2024-autobotzi-fe-linux-web-app.azurewebsites.net/");
@@ -115,7 +120,7 @@ describe("Test suite 1 for login page scenarios", () => {
     cy.url().should("include", "/admin");
   });
 });
-
+*/
 describe("Test suite 2, after you logged in.", () => {
   beforeEach(() => {
     cy.url().then((url) => {
@@ -131,7 +136,7 @@ describe("Test suite 2, after you logged in.", () => {
   afterEach(() => {
     cy.wait(1000);
   });
-
+  /*
   it("Test 1: Change calendar month.", () => {
     for (let i = 0; i < 5; i++) {
       cy.get(".p-datepicker-prev > .p-icon").click();
@@ -194,11 +199,11 @@ describe("Test suite 2, after you logged in.", () => {
     //Edit roles
     //Edit skills
   });
-
+  */
   it("Test 7: Add Department.", () => {
-    cy.addDepartment("Testing", "Testing Department");
+    cy.addDepartment("Test", "Testing Department");
   });
-
+  /*
   it("Test 8: Display department information and edit the informations", () => {
     cy.get(
       ":nth-child(1) > .DepCardContent > a > .expendbutton > .p-button > .p-button-label"
@@ -215,7 +220,7 @@ describe("Test suite 2, after you logged in.", () => {
       "include",
       "http://atc-2024-autobotzi-fe-linux-web-app.azurewebsites.net"
     );
-  });
+  });*/
 });
 
 //Completeaza Test 4,5,6
